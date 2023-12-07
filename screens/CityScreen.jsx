@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {ActivityIndicator, Text, View} from "react-native";
-import {City} from "../components/CityCard";
-import {CityDetail} from "../components/CityCard";
+import {CityDetail} from "../components/City/CityCard";
+import {DOMEN} from "../Consts"
 
 export const CityScreen = ({route,navigation}) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,7 @@ export const CityScreen = ({route,navigation}) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://192.168.57.199:8000/api/cities/${id}/`);
+                const response = await axios.get(`${DOMEN}api/cities/${id}/`);
                 const fetchedCity = response.data;
                 setCity(fetchedCity);
                 // console.log('City updated:', fetchedCity.data.image);
